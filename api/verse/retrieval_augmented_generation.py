@@ -35,8 +35,8 @@ def get_global_llm():
     return g.llm
 
 
-def get_student_response(course, query, previous_responses):
-    """get_student_response takes in the user's course selection, a user query, and a list of previous responses and generates a response that imitates
+def get_professor_response(course, query, previous_responses):
+    """get_professor_response takes in the user's course selection, a user query, and a list of previous responses and generates a response that imitates
     the tone and nature of a literature professor.
 
     Args:
@@ -151,13 +151,13 @@ def get_student_response(course, query, previous_responses):
         segue = segue_response_chain.invoke(
             {"course": course, "statement": response["answer"], "query": query}
         )
-        response_to_user += "\n\n" + segue["answer"].strip()
+        response_to_user += "\n\n" + segue["answer"].strip('"')
 
     return response_to_user
 
 
-def get_student_recommendation(course, messages):
-    """get_student_recommendation takes in the user's course selection and a list of the messages in the sent (both queries posed by
+def get_professor_recommendation(course, messages):
+    """get_professor_recommendation takes in the user's course selection and a list of the messages in the sent (both queries posed by
     user as well as responses from the model) and generates a text recommendation for the user.
 
     Args:
