@@ -2,8 +2,8 @@ import streamlit as st
 import requests
 
 # Local URLs for default Flask server
-RECOMMENDATION_URL = "http://127.0.0.1:5000/rag/getStudentRecommendation"
-RESPONSE_URL = "http://127.0.0.1:5000/rag/getStudentResponse"
+RECOMMENDATION_URL = "http://127.0.0.1:5000/rag/professorRecommendation"
+RESPONSE_URL = "http://127.0.0.1:5000/rag/professorResponse"
 
 st.title("LLMs and Pedagogical Approaches in English Literature")
 
