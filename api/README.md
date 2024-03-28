@@ -45,7 +45,7 @@ You need to configure two areas to run the Verse API.
 
 #### Setting up OpenAI API Key
 
-You need an OpenAI API key to use Verse. Add a `.env` file to the `api/` directory with your OpenAI API key, like so:
+You need an OpenAI API key to use Verse. Add a `.env` file to the `api/` directory with your OpenAI API key, as indicated below:
 
 ```
 OPENAI_API_KEY="YOURKEYHERE"
@@ -83,5 +83,5 @@ You can view the implementation of each endpoint in `api/verse/retrieval_augment
 
 The following endpoints are provided in the Verse API and are implemented in `api/verse/routes/rag.py`:
 
-1. `rag/getStudentResponse`: `rag/getStudentResponse` takes in the user's course selection, a user query, and a tuple of previous LLM responses and generates a response that imitates the tone and nature of a literature professor.
-2. `rag/getStudentRecommendation`: `rag/getStudentRecommendation` takes in the user's course selection and a tuple of the messages in the session (both queries posed by user as well as responses from the model) and generates a dynamic prose recommendation for the user.
+1. `rag/professorResponse`: `rag/professorResponse` takes in the user's course selection, a user query, and a tuple of previous LLM responses and generates a response that imitates the tone and nature of a literature professor.
+2. `rag/professorRecommendation`: `rag/professorRecommendation` takes in the user's course selection and a tuple of the messages in the session (both queries posed by user as well as responses from the model) and generates a dynamic prose recommendation for the user.
