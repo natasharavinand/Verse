@@ -6,10 +6,10 @@ import verse.retrieval_augmented_generation as rag
 bp = Blueprint("rag", __name__, url_prefix="/rag")
 
 
-@bp.route("/getStudentResponse", methods=["POST"])
-def get_student_response():
+@bp.route("/professorResponse", methods=["POST"])
+def professor_response():
     """
-    get_student_response takes in the user's course selection, a user query, and a list of previous responses and generates a response that imitates
+    professor_response takes in the user's course selection, a user query, and a list of previous responses and generates a response that imitates
     the tone and nature of a literature professor.
 
     Args:
@@ -47,7 +47,7 @@ def get_student_response():
             {"error": "RESPONSE_ERROR", "message": "Query must be provided."}
         )
 
-    response = rag.get_student_response(course, query, previous_responses)
+    response = rag.get_professor_response(course, query, previous_responses)
 
     if not response:
         raise ValueError(
@@ -57,10 +57,10 @@ def get_student_response():
     return jsonify(response), 200
 
 
-@bp.route("/getStudentRecommendation", methods=["POST"])
-def get_student_recommendation():
+@bp.route("/professorRecommendation", methods=["POST"])
+def professor_recommendation():
     """
-    get_student_recommendation takes in the current course and all the messages from the suggestion and generates a context-dependent
+    professor_recommendation takes in the current course and all the messages from the suggestion and generates a context-dependent
     recommendation of prose to the student.
 
     Args:
@@ -98,7 +98,7 @@ def get_student_recommendation():
             {"error": "RECOMMENDATION_ERROR", "message": "Messages must be provided."}
         )
 
-    recommendation = rag.get_student_recommendation(course, messages)
+    recommendation = rag.get_professor_recommendation(course, messages)
 
     if not recommendation:
         raise ValueError(
