@@ -15,7 +15,7 @@ def client(app):
     return app.test_client()
 
 
-# valid test input for "/rag/getStudentResponse"
+# valid test input for "/rag/professorResponse"
 @pytest.fixture
 def inputs_response():
     return {
@@ -24,7 +24,7 @@ def inputs_response():
         "previous_responses": (),
     }
     
-# valid test input for "/rag/getStudentRecommendation"
+# valid test input for "/rag/professorRecommendation"
 @pytest.fixture
 def inputs_recommendation():
     return {
