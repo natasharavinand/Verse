@@ -1,0 +1,34 @@
+name: Test Verse
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+      - '*/*'
+
+jobs:
+  test-verse-api:
+    name: Verse API Testing
+    defaults:
+      run:
+        working-directory: ./api
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Use Python for Testing
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11.x'
+          cache: 'pip'
+      - name: Install dependencies for Verse
+        run: |
+          echo Install dependencies for Verse
+          python -m pip install --upgrade pip
+          pip install -e .
+      - name: Run testing suite with pytest
+        run: |
+          echo Run testing suite with pytest
+          pytest -v
