@@ -86,7 +86,8 @@ def get_professor_response(course, query, previous_responses):
     documents = chromaDB_retriever.get_relevant_documents(query)
     context = "\n".join([doc.page_content for doc in documents])
 
-    previous_responses = "\n".join(previous_responses)
+    if previous_responses:
+        previous_responses = "\n".join(previous_responses)
 
     prompt_template = PromptTemplate(
         template=prompt_template,
