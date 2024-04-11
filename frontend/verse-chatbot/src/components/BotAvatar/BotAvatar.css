@@ -1,0 +1,13 @@
+/* Adapted from react-chatbox-kit documentation (https://fredrikoseberg.github.io/react-chatbot-kit-docs/docs/) */
+
+.bot-avatar {
+    width:35px;
+    height:35px;
+    border-radius:50%;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    font-size: 0.9rem;
+    background-color: #202c45;
+    margin-right:15px;
+}
