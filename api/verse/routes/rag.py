@@ -2,12 +2,14 @@ import re
 import verse.retrieval_augmented_generation as rag
 
 from flask import Blueprint, jsonify, request
+from flask_cors import cross_origin
 
 # create blueprint for RAG routes
 bp = Blueprint("rag", __name__, url_prefix="/rag")
 
 
-@bp.route("/professorResponse", methods=["POST"])
+@bp.route("/professorResponse", methods=["OPTIONS", "POST"])
+@cross_origin()
 def professor_response():
     """
     professor_response takes in the user's course selection, a user query, and a list of previous responses and generates a response that imitates
@@ -28,6 +30,7 @@ def professor_response():
         ValueError: If the request is not JSON formatted, one of the required fields are empty, or if the call to
         rag.get_llm_student_response() fails.
     """
+
     if not request.is_json:
         raise ValueError(
             {"error": "RESPONSE_ERROR", "message:": "Request must be JSON formatted."}
@@ -47,7 +50,7 @@ def professor_response():
         raise ValueError(
             {"error": "RESPONSE_ERROR", "message": "Query must be provided."}
         )
-        
+
     dangerous_characters_pattern = r"[;\'\\=<>/&]"
     query = re.sub(dangerous_characters_pattern, "", query)
 
@@ -62,6 +65,7 @@ def professor_response():
 
 
 @bp.route("/professorRecommendation", methods=["POST"])
+@cross_origin()
 def professor_recommendation():
     """
     professor_recommendation takes in the current course and all the messages from the suggestion and generates a context-dependent
