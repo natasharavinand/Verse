@@ -148,7 +148,7 @@ unstructured-client==0.18.0
 urllib3==1.26.18
 uvicorn==0.28.0
 uvloop==0.19.0
--e git+https://github.com/natasharavinand/Verse.git@d207840ec053f98f8cb5056eae2ca90e627c463c#egg=verse&subdirectory=api
+-e git+https://github.com/natasharavinand/Verse.git@8a8e133ac2d68198e92f8e9de75b8f974c9b3408#egg=verse&subdirectory=api
 watchdog==4.0.0
 watchfiles==0.21.0
 websocket-client==1.7.0
