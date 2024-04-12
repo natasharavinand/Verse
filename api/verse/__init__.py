@@ -1,10 +1,12 @@
 from flask import Flask
+from flask_cors import CORS
 
 from verse.routes import rag
 
 
 def create_app(test_config=None):
     app = Flask(__name__)
+    CORS(app)
 
     # configure application
     if not test_config:

@@ -77,7 +77,7 @@ Before you call these endpoints, ensure you are running the Flask server locally
 	
 The application can also be run without the `--debug` flag, though changes in the source code will not be automatically integrated.
 
-### Endpoints Available in the API
+#### Endpoints Available in the API
 
 You can view the implementation of each endpoint in `api/verse/retrieval_augmented_generation.py`. 
 

@@ -6,18 +6,6 @@
 
 ## Technical Overview
 
-On the backend, Verse is powered with a Flask API. The layout of the API was developed according to Flask [documentation](https://flask.palletsprojects.com/en/3.0.x/tutorial/). The project uses `pytest` for backend testing. 
-
-On the backend, the Verse API uses:
-  
--  `GPT-3.5-turbo`, OpenAI's fast, chat-based 3rd-generation LLM
-
--  `langchain`, a framework that helps software engineers develop applications with LLMs
-
--  `ChromaDB`, an open-source embedding database
-
--  `beautifulsoup4`, a web-scraping package to process and transform raw data from course materials into transcripts
-
 On the frontend, the UI uses:
 
 - `JavaScript`, for client-side development
@@ -89,44 +77,3 @@ To run Verse as a full-stack React application, follow three steps:
 
 2. `cd` to `frontend/verse-chatbot`. Install any necessary dependencies with `npm install`.
 3. Run the application with `npm start`. By default, React will locally serve the application on `http://localhost:3000`.
-
-### Running Verse as a Streamlit application
-
-To run the Streamlit demo of the Verse application, follow two steps:
-
-1.  `cd` to `api/`. Run the Verse API in debug mode locally with the following command:
-	```
-	flask --app verse --debug run
-	```
-
-	The application can also be run without the `--debug` flag, though changes in the source code will not be automatically integrated.
-
-	You can additionally specify the host with the `--host` flag. By default, Flask serves locally on `http://127.0.0.1:5000`.
-
-2.  `cd` from `api/` to `api/verse/` and run the Streamlit app:
-
-	```
-	streamlit run verse_streamlit_app.py
-	```
-
-	By default, Streamlit serves locally on `http://localhost:8501`.
-
-### Using the Verse API directly
-You can call endpoints from the Verse API as well. 
-
-Before you call these endpoints, ensure you are running the Flask server locally from the `api/` directory. You can run the API in debug mode using:
-
-	
-	flask --app verse --debug run
-	
-	
-The application can also be run without the `--debug` flag, though changes in the source code will not be automatically integrated.
-
-#### Endpoints Available in the API
-
-You can view the implementation of each endpoint in `api/verse/retrieval_augmented_generation.py`. 
-
-The following endpoints are provided in the Verse API and are implemented in `api/verse/routes/rag.py`:
-
-1. `rag/professorResponse`: `rag/professorResponse` takes in the user's course selection, a user query, and a tuple of previous LLM responses and generates a response that imitates the tone and nature of a literature professor.
-2. `rag/professorRecommendation`: `rag/professorRecommendation` takes in the user's course selection and a tuple of the messages in the session (both queries posed by user as well as responses from the model) and generates a dynamic prose recommendation for the user.
