@@ -1,70 +1,79 @@
-# Getting Started with Create React App
+# Verse
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+*Verse* is an LLM-integrated software application enhanced with retrieval augmented generation designed for English literature pedagogy. Verse is enhanced with materials from Yale University's English Literature OpenCourseware Program ([link](https://oyc.yale.edu/english)).
 
-## Available Scripts
+-------------------
 
-In the project directory, you can run:
+## Technical Overview
 
-### `npm start`
+On the frontend, the UI uses:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- `JavaScript`, for client-side development
+- `React`, a framework to build user interfaces
+	- `react-chatbot-kit`, a React open-source package designed to create configurable chatbots. Documentation for this package, can be found [here](https://fredrikoseberg.github.io/react-chatbot-kit-docs/). 
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Installation Instructions
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Install the Verse API
 
-### `npm run build`
+1. Clone this repository using `HTTPS`, `SSH`, or the GitHub CLI.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+2. Install `pip` according to system configuration.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+3. [Optional] Create and activate a virtual environment to install requirements.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+4.  `cd` into the `api/` directory. Then, run the following command:
 
-### `npm run eject`
+	```
+	pip install -e .
+	```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+	This command installs the `verse` package in editable mode.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Configuration Instructions
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Configuring the Verse API
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+You need to configure two areas to run the Verse API.
 
-## Learn More
+#### Setting up OpenAI API Key
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+You need an OpenAI API key to use Verse. Add a `.env` file to the `api/` directory with your OpenAI API key, as indicated below:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```
+OPENAI_API_KEY="YOURKEYHERE"
+```
 
-### Code Splitting
+#### Generating ChromaDB database locally
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+The ChromaDB database is not stored on the Git repository due to space constraints. To generate the database locally, execute these two scripts in the `api/verse/` folder:
 
-### Analyzing the Bundle Size
+```
+python3 data_processing.py
+python3 vector_database.py
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+`data_processing.py` extracts and processes the raw data in `api/verse/data/raw` into the `api/verse/data/extracted` and `api/verse/data/processed` directories. 
 
-### Making a Progressive Web App
+`vector_database.py` uses the processed data to create a new ChromaDB database in `api/verse/` called `chroma/`. Inside `chroma/`, you will find a `sqlite3` database representing a ChromaDB.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Running Verse
 
-### Advanced Configuration
+*Note: The configuration instructions must be followed before running Verse.*
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### Running Verse as a full-stack React application
 
-### Deployment
+To run Verse as a full-stack React application, follow three steps:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+1.  `cd` to `api/`. Run the Verse API in debug mode locally with the following command:
+	```
+	flask --app verse --debug run
+	```
 
-### `npm run build` fails to minify
+	The application can also be run without the `--debug` flag, though changes in the source code will not be automatically integrated.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+	You can additionally specify the host with the `--host` flag. By default, Flask serves locally on `http://127.0.0.1:5000`.
+
+2. `cd` to `frontend/verse-chatbot`. Install any necessary dependencies with `npm install`.
+3. Run the application with `npm start`. By default, React will locally serve the application on `http://localhost:3000`.
