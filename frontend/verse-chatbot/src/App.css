@@ -44,10 +44,20 @@
 
 .react-chatbot-kit-chat-bot-message {
   margin-left: 0 !important;
-  width: 450px !important;
+  width: 800px !important;
+  font-size: 18px !important;
 }
 
 .react-chatbot-kit-user-chat-message {
   margin-left: 0 !important;
-  width: 500px !important;
+  width: 800px !important;
+  font-size: 18px !important;
+}
+
+.react-chatbot-kit-chat-inner-container {
+  height:700px !important;
+}
+
+.react-chatbot-kit-chat-message-container {
+  height: 600px !important;
 }
