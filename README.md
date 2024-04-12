@@ -3,8 +3,12 @@
 *Verse* is an LLM-integrated software application enhanced with retrieval augmented generation designed for English literature pedagogy. Verse is enhanced with materials from Yale University's English Literature OpenCourseware Program ([link](https://oyc.yale.edu/english)).
 
 -------------------
-  
-On the backend, Verse is powered with a Flask API. The API uses:
+
+## Technical Overview
+
+On the backend, Verse is powered with a Flask API. The layout of the API was developed according to Flask [documentation](https://flask.palletsprojects.com/en/3.0.x/tutorial/). The project uses `pytest` for backend testing. 
+
+On the backend, the Verse API uses:
   
 -  `GPT-3.5-turbo`, OpenAI's fast, chat-based 3rd-generation LLM
 
@@ -14,9 +18,11 @@ On the backend, Verse is powered with a Flask API. The API uses:
 
 -  `beautifulsoup4`, a web-scraping package to process and transform raw data from course materials into transcripts
 
-The layout of the API was developed according to Flask [documentation](https://flask.palletsprojects.com/en/3.0.x/tutorial/).
+On the frontend, the UI uses:
 
-The project uses `pytest` for testing.
+- `JavaScript`, for client-side development
+- `React`, a framework to build user interfaces
+	- `react-chatbot-kit`, a React open-source package designed to create configurable chatbots. Documentation for this package, can be found [here](https://fredrikoseberg.github.io/react-chatbot-kit-docs/). 
 
 ## Installation Instructions
 
@@ -66,6 +72,24 @@ python3 vector_database.py
 
 ## Running Verse
 
+*Note: The configuration instructions must be followed before running Verse.*
+
+### Running Verse as a full-stack React application
+
+To run Verse as a full-stack React application, follow three steps:
+
+1.  `cd` to `api/`. Run the Verse API in debug mode locally with the following command:
+	```
+	flask --app verse --debug run
+	```
+
+	The application can also be run without the `--debug` flag, though changes in the source code will not be automatically integrated.
+
+	You can additionally specify the host with the `--host` flag. By default, Flask serves locally on `http://127.0.0.1:5000`.
+
+2. `cd` to `frontend/verse-chatbot`. Install any necessary dependencies with `npm install`.
+3. Run the application with `npm start`. By default, React will locally serve the application on `http://localhost:3000`.
+
 ### Running Verse as a Streamlit application
 
 To run the Streamlit demo of the Verse application, follow two steps:
@@ -98,7 +122,7 @@ Before you call these endpoints, ensure you are running the Flask server locally
 	
 The application can also be run without the `--debug` flag, though changes in the source code will not be automatically integrated.
 
-### Endpoints Available in the API
+#### Endpoints Available in the API
 
 You can view the implementation of each endpoint in `api/verse/retrieval_augmented_generation.py`. 
 
