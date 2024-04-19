@@ -75,5 +75,4 @@ To run Verse as a full-stack React application, follow three steps:
 
 	You can additionally specify the host with the `--host` flag. By default, Flask serves locally on `http://127.0.0.1:5000`.
 
-2. `cd` to `frontend/verse-chatbot`. Install any necessary dependencies with `npm install`.
-3. Run the application with `npm start`. By default, React will locally serve the application on `http://localhost:3000`.
+2. Open another terminal. `cd` to `frontend/verse-chatbot`. Install any necessary dependencies with `npm install`. Run the application with `npm start`. By default, React will locally serve the application on `http://localhost:3000`.
