@@ -31,7 +31,7 @@ const ActionProvider = ({ createChatBotMessage, setState, children }) => {
 
                 setMessageHistory(prevMessages => [...prevMessages, answer, segue]);
 
-                if (recommendationCounter !== 0 && recommendationCounter % 3 === 0) {
+                if (recommendationCounter !== 0 && recommendationCounter % 2 === 0) {
                     const recommendationMessage = createChatBotMessage('Access a real-time recommendation based on our conversation', {
                         widget: 'recommendation'
                     });
@@ -49,7 +49,7 @@ const ActionProvider = ({ createChatBotMessage, setState, children }) => {
 
                 setMessageHistory(prevMessages => [...prevMessages, answer]);
 
-                if (recommendationCounter !== 0 && recommendationCounter % 3 === 0) {
+                if (recommendationCounter !== 0 && recommendationCounter % 2 === 0) {
                     const recommendationMessage = createChatBotMessage('Access a real-time recommendation based on our conversation', {
                         widget: 'recommendation'
                     });
