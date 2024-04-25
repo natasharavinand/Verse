@@ -1,33 +1,34 @@
 # Verse
 
-*Verse* is an LLM-integrated software application enhanced with retrieval augmented generation designed for English literature pedagogy. Verse is enhanced with materials from Yale University's English Literature OpenCourseware Program ([link](https://oyc.yale.edu/english)).
+**Verse** is an LLM-integrated software application enhanced with retrieval augmented generation designed for English literature pedagogy. Verse is enhanced with materials from Yale University's English Literature OpenCourseware Program ([link](https://oyc.yale.edu/english)).
+
+> Note: Verse aims to be a supplemental tool to in-person learning. Dialogue between human students and human teachers should not be something to replace. Rather, AI assistants should be used to enhance human-centered pedagogical experiences.
 
 ![Verse Demo](https://drive.google.com/uc?export=view&id=18ja_aBQE_8igbR9umV95kV94TTu4WLw2)
 
--------------------
+---
 
 ## Technical Overview
 
-On the backend, Verse is powered with a Flask API. The layout of the API was developed according to Flask [documentation](https://flask.palletsprojects.com/en/3.0.x/tutorial/). The project uses `pytest` for backend testing. 
+On the backend, Verse is powered with a Flask API. The layout of the API was developed according to Flask [documentation](https://flask.palletsprojects.com/en/3.0.x/tutorial/). The project uses `pytest` for backend testing.
 
 On the backend, the Verse API uses:
-  
--  `GPT-3.5-turbo`, OpenAI's fast, chat-based 3rd-generation LLM
 
--  `langchain`, a framework that helps software engineers develop applications with LLMs
+- `GPT-3.5-turbo`, OpenAI's fast, chat-based 3rd-generation LLM
 
--  `ChromaDB`, an open-source embedding database
+- `langchain`, a framework that helps software engineers develop applications with LLMs
 
--  `beautifulsoup4`, a web-scraping package to process and transform raw data from course materials into transcripts
+- `ChromaDB`, an open-source embedding database
+
+- `beautifulsoup4`, a web-scraping package to process and transform raw data from course materials into transcripts
 
 On the frontend, the UI uses:
 
 - `JavaScript`, for client-side development
 - `React`, a framework to build user interfaces
-	- `react-chatbot-kit`, a React open-source package designed to create configurable chatbots. Documentation for this package, can be found [here](https://fredrikoseberg.github.io/react-chatbot-kit-docs/). 
+  - `react-chatbot-kit`, a React open-source package designed to create configurable chatbots. Documentation for this package, can be found [here](https://fredrikoseberg.github.io/react-chatbot-kit-docs/).
 
 ## Installation Instructions
-
 
 ### Install the Verse API
 
@@ -37,13 +38,13 @@ On the frontend, the UI uses:
 
 3. [Optional] Create and activate a virtual environment to install requirements.
 
-4.  `cd` into the `api/` directory. Then, run the following command:
+4. `cd` into the `api/` directory. Then, run the following command:
 
-	```
-	pip install -e .
-	```
+   ```
+   pip install -e .
+   ```
 
-	This command installs the `verse` package in editable mode.
+   This command installs the `verse` package in editable mode.
 
 ## Configuration Instructions
 
@@ -68,64 +69,65 @@ python3 data_processing.py
 python3 vector_database.py
 ```
 
-`data_processing.py` extracts and processes the raw data in `api/verse/data/raw` into the `api/verse/data/extracted` and `api/verse/data/processed` directories. 
+`data_processing.py` extracts and processes the raw data in `api/verse/data/raw` into the `api/verse/data/extracted` and `api/verse/data/processed` directories.
 
 `vector_database.py` uses the processed data to create a new ChromaDB database in `api/verse/` called `chroma/`. Inside `chroma/`, you will find a `sqlite3` database representing a ChromaDB.
 
 ## Running Verse
 
-*Note: The configuration instructions must be followed before running Verse.*
+_Note: The configuration instructions must be followed before running Verse._
 
 ### Running Verse as a full-stack React application
 
 To run Verse as a full-stack React application, follow three steps:
 
 1.  `cd` to `api/`. Run the Verse API in debug mode locally with the following command:
-	```
-	flask --app verse --debug run
-	```
 
-	The application can also be run without the `--debug` flag, though changes in the source code will not be automatically integrated.
+    ```
+    flask --app verse --debug run
+    ```
 
-	You can additionally specify the host with the `--host` flag. By default, Flask serves locally on `http://127.0.0.1:5000`.
+    The application can also be run without the `--debug` flag, though changes in the source code will not be automatically integrated.
 
-2. Open another terminal. `cd` to `frontend/verse-chatbot`. Install any necessary dependencies with `npm install`. Run the application with `npm start`. By default, React will locally serve the application on `http://localhost:3000`.
+    You can additionally specify the host with the `--host` flag. By default, Flask serves locally on `http://127.0.0.1:5000`.
+
+2.  Open another terminal. `cd` to `frontend/verse-chatbot`. Install any necessary dependencies with `npm install`. Run the application with `npm start`. By default, React will locally serve the application on `http://localhost:3000`.
 
 ### Running Verse as a Streamlit application
 
 To run the Streamlit demo of the Verse application, follow two steps:
 
 1.  `cd` to `api/`. Run the Verse API in debug mode locally with the following command:
-	```
-	flask --app verse --debug run
-	```
 
-	The application can also be run without the `--debug` flag, though changes in the source code will not be automatically integrated.
+    ```
+    flask --app verse --debug run
+    ```
 
-	You can additionally specify the host with the `--host` flag. By default, Flask serves locally on `http://127.0.0.1:5000`.
+    The application can also be run without the `--debug` flag, though changes in the source code will not be automatically integrated.
+
+    You can additionally specify the host with the `--host` flag. By default, Flask serves locally on `http://127.0.0.1:5000`.
 
 2.  Open another terminal. `cd` from `api/` to `api/verse/` and run the Streamlit app:
 
-	```
-	streamlit run verse_streamlit_app.py
-	```
+    ```
+    streamlit run verse_streamlit_app.py
+    ```
 
-	By default, Streamlit serves locally on `http://localhost:8501`.
+    By default, Streamlit serves locally on `http://localhost:8501`.
 
 ### Using the Verse API directly
-You can call endpoints from the Verse API as well. 
+
+You can call endpoints from the Verse API as well.
 
 Before you call these endpoints, ensure you are running the Flask server locally from the `api/` directory. You can run the API in debug mode using:
 
-	
-	flask --app verse --debug run
-	
-	
+    flask --app verse --debug run
+
 The application can also be run without the `--debug` flag, though changes in the source code will not be automatically integrated.
 
 #### Endpoints Available in the API
 
-You can view the implementation of each endpoint in `api/verse/retrieval_augmented_generation.py`. 
+You can view the implementation of each endpoint in `api/verse/retrieval_augmented_generation.py`.
 
 The following endpoints are provided in the Verse API and are implemented in `api/verse/routes/rag.py`:
 
