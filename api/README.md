@@ -1,6 +1,10 @@
 # Verse
 
-*Verse* is an LLM-integrated software application enhanced with retrieval augmented generation designed for English literature pedagogy. Verse is enhanced with materials from Yale University's English Literature OpenCourseware Program ([link](https://oyc.yale.edu/english)).
+![Verse Testing Suite](https://github.com/natasharavinand/Verse/actions/workflows/test_verse.yml/badge.svg)
+
+**Verse** is an LLM-integrated software application enhanced with retrieval augmented generation designed for English literature pedagogy. Verse is enhanced with materials from Yale University's Open Courses Program for English Literature ([link](https://oyc.yale.edu/english)).
+
+> Note: Verse aims to be a supplemental tool to in-person learning. Dialogue between human students and human teachers should not be something to replace. Rather, AI assistants should be used to enhance human-centered pedagogical experiences.
 
 -------------------
   
