@@ -5,7 +5,7 @@ build-backend = "flit_core.buildapi"
 [project]
 name = "verse"
 version = "0.1.0"
-description = "An API for a RAG-enhanced model designed for study in the Yale OpenCourseware English literature program."
+description = "An API for a RAG-enhanced model designed for study in Yale University's Open Courses Program for English Literature."
 authors = [{name = "Natasha Ravinand", email = "natasharavinand@gmail.com"}]
 dependencies = [
     "aiohttp==3.9.3",
